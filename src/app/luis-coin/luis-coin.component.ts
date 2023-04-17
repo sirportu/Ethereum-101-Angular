@@ -15,7 +15,7 @@ export class LuisCoinComponent implements OnInit {
   isOwner = false;
   contractABI = abi.abi;
   contractAddress = environment.contract_address_coin;
-  coin: any = { name: null, symbol: null, owner: null, supply: null };
+  coin: any = { name: null, symbol: null, owner: null, supply: null, balance: null };
   userAddress!: string;
   transferAmount!: string;
   mintAmount!: string;
@@ -57,6 +57,7 @@ export class LuisCoinComponent implements OnInit {
         this.coin.symbol = await LUCContract.symbol();
         this.coin.owner = await LUCContract.owner();
         this.coin.supply = ethers.utils.formatEther(await LUCContract.totalSupply());
+        this.coin.balance = ethers.utils.formatEther(await LUCContract.balanceOf(this.userAddress));
 
         if (this.coin.owner.toLowerCase() === this.userAddress.toLowerCase()) {
           this.isOwner = true;

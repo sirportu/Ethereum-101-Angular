@@ -16,7 +16,7 @@
   <div class="content">
     <h1>{{coin.name}} ({{coin.symbol}})</h1>
     <h3>Owner: {{coin.owner}}</h3>
-    <h3>Supply: {{coin.supply}}</h3>
+    <h3>Total Supply: {{coin.supply}} / Balance: {{coin.balance}}</h3>
     <div class="card-container">
       <a class="card" rel="noopener" (click)="checkIfWalletIsConnected()">
         <span>{{isWalletConnected ? "Wallet Connected" : "Connect Wallet"}}</span>
