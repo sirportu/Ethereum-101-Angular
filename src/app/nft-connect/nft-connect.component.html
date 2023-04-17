@@ -10,59 +10,20 @@
     <a aria-label="Video Game Store" rel="noopener" [routerLink]="['/video-game-store']" title="VideoGameStore" class="menu-top">
       <span>Video Game Store</span>
     </a>
-    <a aria-label="Nft Connection" rel="noopener" [routerLink]="['/nft-connection']" title="NftConnection" class="menu-top">
-      <span>Nft Connection</span>
+    <a aria-label="Luis Coin" rel="noopener" [routerLink]="['/luis-coin']" title="LuisCoin" class="menu-top">
+      <span>Luis Coin</span>
     </a>
 </div>
 
 <div class="content" role="main">
   <div class="content">
-    <h1>{{coin.name}} ({{coin.symbol}})</h1>
-    <h3>Owner: {{coin.owner}}</h3>
-    <h3>Total Supply: {{coin.supply}} / Balance: {{coin.balance}}</h3>
+    <h1>Metamask Connect</h1>
+    <h3>Address: {{user.address}}</h3>
+    <h3>Balance: {{user.balance}}</h3>
     <div class="card-container">
-      <a class="card" rel="noopener" (click)="checkIfWalletIsConnected()">
+      <a class="card" rel="noopener" (click)="isWalletConnected ? onDisConnect() : onConnect()">
         <span>{{isWalletConnected ? "Wallet Connected" : "Connect Wallet"}}</span>
       </a>
-    </div>
-  </div>
-
-  <div class="content" *ngIf="isWalletConnected && isOwner" style="display: block;text-align: center;">
-    <h1>Admin Coins</h1>
-    <div class="container-fluid">
-      <div class="form-game">
-        <input type="number" id="mintAmount" name="mintAmount" [(ngModel)]="mintAmount" placeholder="Mint Amount">
-      </div>
-      <div class="card-container">
-        <a class="card" rel="noopener" (click)="mintCoin()">
-          <span>Mint Coins</span>
-        </a>
-      </div>
-    </div>
-    <div class="container-fluid">
-      <div class="form-game">
-        <input type="number" id="burnAmount" name="burnAmount" [(ngModel)]="burnAmount" placeholder="Burn Amount">
-      </div>
-      <div class="card-container">
-        <a class="card" rel="noopener" (click)="burnCoin()">
-          <span>Burn Coins</span>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <div class="content" style="display: block;text-align: center;">
-    <h1>Transfer Coin</h1>
-    <div class="container-fluid">
-      <div class="form-game">
-        <input type="text" id="transferAddress" name="transferAddress" [(ngModel)]="transferAddress" placeholder="Address">
-        <input type="number" id="transferAmount" name="transferAmount" [(ngModel)]="transferAmount" placeholder="Transfer Amount">
-      </div>
-      <div class="card-container">
-        <a class="card" rel="noopener" (click)="transferCoin()">
-          <span>Transfer Coin</span>
-        </a>
-      </div>
     </div>
   </div>
 
