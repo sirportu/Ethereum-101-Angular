@@ -17,13 +17,29 @@
 
 <div class="content" role="main">
   <div class="content">
-    <h1>Metamask Connect</h1>
-    <h3>Address: {{user.address}}</h3>
-    <h3>Balance: {{user.balance}}</h3>
+    <h1>{{user.name}} ({{user.symbol}})</h1>
+    <h3>Owner: {{user.owner}}</h3>
+    <h3>User Address: {{user.address}}</h3>
+    <h3>User Balance: {{user.balance}} / User Nft Balance: {{user.balanceNft}}</h3>
     <div class="card-container">
       <a class="card" rel="noopener" (click)="isWalletConnected ? onDisConnect() : onConnect()">
         <span>{{isWalletConnected ? "Wallet Connected" : "Connect Wallet"}}</span>
       </a>
+    </div>
+  </div>
+
+  <div class="content" *ngIf="isWalletConnected" style="display: block;text-align: center;">
+    <h1>Transactions</h1>
+    <div class="container-fluid">
+      <div class="form-game">
+        <input type="text" id="mintAddress" name="mintAddress" [(ngModel)]="mintAddress" placeholder="Address">
+        <input type="text" id="mintUri" name="mintUri" [(ngModel)]="mintUri" placeholder="Mint uri">
+      </div>
+      <div class="card-container">
+        <a class="card" rel="noopener" (click)="MintNft()">
+          <span>Mint</span>
+        </a>
+      </div>
     </div>
   </div>
 
